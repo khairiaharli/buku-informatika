@@ -1,234 +1,340 @@
-# Jaringan Komputer, Internet & Mesin Pencari
+# Jaringan Komputer, Internet, IoT & Literasi Pencarian
 
 > **Kelas 7 • Semester 2 • Elemen: Literasi Digital • Alokasi Waktu: 12 JP**  
-> **Tujuan Pembelajaran (TP 7.2.1):** Memahami konsep dasar internet serta pemanfaatannya, membedakan jaringan lokal dan internet, serta menggunakan mesin pencari untuk menemukan informasi secara efektif.  
+> **Tujuan Pembelajaran:** Memahami perbedaan jaringan lokal dan internet, infrastruktur fisik dan pengalamatan internet (IP & DNS), perkembangan jaringan seluler (1G–5G), penerapan dan keamanan *Internet of Things* (IoT), perbedaan *Web Browser* dan *Search Engine*, serta teknik pencarian informasi yang efektif dan kritis di era AI.  
 > **Dimensi Profil Lulusan:** Mandiri, Bernalar Kritis.
 
 ---
 
-## Peta Konsep
+## Peta Konsep Bab Ini
 
 ```mermaid
 flowchart TD
-    A[Jaringan Komputer & Internet] --> B[Jenis Jaringan]
-    A --> C[Infrastruktur & Sinyal]
-    A --> D[Pemanfaatan Internet]
-    B --> B1[Jaringan Lokal / LAN]
-    B --> B2[Jaringan Luas / Internet]
-    C --> C1[Alur Server ke Pengguna]
-    C --> C2[Evolusi 1G - 5G & IoT]
-    D --> D1[Web Browser vs Search Engine]
-    D --> D2[Teknik Pencarian Efektif]
+    A[Internet & Literasi Pencarian] --> B[Jaringan & Infrastruktur Fisik]
+    A --> C[Pengalamatan & Akses Web]
+    A --> D[Internet of Things / IoT]
+    A --> E[Strategi Pencarian & Era AI]
+
+    B --> B1[LAN vs Internet]
+    B --> B2[Server → Fiber Optik → ISP → BTS/Wi-Fi]
+    B --> B3[Evolusi 1G hingga 5G]
+
+    C --> C1[IP Address & Cara Kerja DNS]
+    C --> C2[Web Browser vs Search Engine]
+    C --> C3[Struktur URL & HTTPS]
+
+    D --> D1[4 Komponen Utama IoT]
+    D --> D2[Penerapan & Keamanan Privasi]
+
+    E --> E1[Operator Pencarian Cerdas]
+    E --> E2[Prompting & Sikap Kritis AI]
 ```
 
 ---
 
-## 1. Pemantik: Mengapa Pesan Bisa Sampai dalam Hitungan Detik?
+## 1. Pemantik: Mengapa Internet Bisa "Mati" Saat Kabel Putus?
 
-Pernahkah kamu mengirim pesan singkat ke teman yang berada di kota lain, atau membuka video pembelajaran di HP, lalu semuanya muncul hanya dalam hitungan detik? Padahal, komputer penyimpanan (*server*) tempat video itu berada bisa jadi terletak di negara lain yang jaraknya ribuan kilometer dari rumahmu.
+Pernahkah kamu mengalami kejadian ketika jaringan Wi-Fi atau kuota internet tiba-tiba melambat serentak di satu kota, lalu muncul berita: *"Akses internet terganggu akibat putusnya kabel bawah laut"*?
 
-Bagaimana mungkin data dari belahan dunia lain bisa berpindah secepat kedipan mata ke layar ponsel kita? Jawabannya terletak pada **jaringan komputer** dan **internet**. Di bab ini, kita akan membedah bagaimana jaringan bekerja dari ruang laboratorium sekolah hingga skala global, serta cara memanfaatkan mesin pencari secara cerdas.
+Sekilas terdengar aneh. Kita menggunakan HP tanpa kabel sama sekali—lalu apa hubungannya dengan kabel di dasar laut?
+
+Di bab ini, kita akan membongkar rahasia di balik layar internet: bagaimana data melintasi samudra dalam hitungan milidetik, bagaimana benda-benda di sekitar kita bisa terhubung ke internet, hingga bagaimana cara bertanya kepada mesin pencari dan AI agar mendapatkan ilmu yang benar, bukan sekadar informasi cepat.
 
 ---
 
-## 2. Mengenal Jaringan Komputer: Lokal (LAN) vs Internet
+## 2. Jaringan Lokal (LAN) vs Internet
 
-**Jaringan komputer** adalah dua atau lebih perangkat (komputer, laptop, ponsel, printer) yang saling terhubung melalui media kabel maupun nirkabel (*wireless*) agar dapat bertukar data dan berbagi sumber daya.
+Sebelum memahami internet, kita perlu mengenal **jaringan komputer**—yaitu dua atau lebih perangkat (komputer, laptop, ponsel, *printer*) yang saling terhubung melalui kabel atau nirkabel (*wireless*) agar dapat bertukar data dan berbagi sumber daya.
 
-Berdasarkan luas jangkauannya, jaringan komputer dibagi menjadi beberapa jenis utama:
+Berdasarkan luas cakupannya, jaringan dibagi menjadi:
+1. **LAN (*Local Area Network*) — Jaringan Lokal:** Mencakup area sempit seperti satu ruang laboratorium komputer, satu rumah, atau satu gedung sekolah. Komputer di lab bisa saling berkirim file dan mencetak ke satu *printer* bersama **meskipun tidak terhubung ke internet**.
+2. **MAN (*Metropolitan Area Network*):** Menghubungkan beberapa jaringan lokal dalam satu wilayah kota (misalnya jaringan antar-kantor pemerintahan di Kota Solok).
+3. **WAN (*Wide Area Network*):** Menghubungkan jaringan lintas kota, lintas pulau, hingga lintas negara.
+4. **Internet (*Interconnected Network*):** Jaringan raksasa berskala global yang menyatukan jutaan jaringan LAN, MAN, dan WAN di seluruh dunia menjadi satu sistem komunikasi terbuka.
 
-1. **LAN (*Local Area Network*) — Jaringan Lokal**  
-   Jaringan yang mencakup area sempit dan terbatas, seperti satu ruangan laboratorium komputer, satu gedung sekolah, atau rumah. Contoh paling dekat: seluruh komputer di lab sekolah yang terhubung ke satu *printer* bersama atau satu jaringan Wi-Fi lokal tanpa harus tersambung ke internet.
-2. **MAN (*Metropolitan Area Network*)**  
-   Jaringan yang jangkauannya lebih luas dari LAN, biasanya menghubungkan beberapa gedung dalam satu kota (misalnya jaringan antar-kantor dinas pemerintahan di Kota Solok).
-3. **WAN (*Wide Area Network*)**  
-   Jaringan berskala sangat luas yang menghubungkan antar-kota, antar-pulau, bahkan antar-negara.
-4. **Internet (*Interconnected Network*)**  
-   Jaringan global raksasa yang menghubungkan jutaan jaringan lokal (LAN, MAN, WAN) di seluruh dunia menjadi satu sistem komunikasi besar. Jika LAN diibaratkan jalan komplek perumahan, maka **internet adalah seluruh jaringan jalan raya, tol, dan jalur penerbangan yang menghubungkan semua kota di dunia**.
+### Perbandingan Jaringan Lokal (LAN) dan Internet
 
-### Perbedaan Jaringan Lokal (LAN) dan Internet
-
-| Aspek Perbandingan | Jaringan Lokal (LAN) | Internet |
+| Aspek | Jaringan Lokal (LAN) | Internet |
 | :--- | :--- | :--- |
-| **Jangkauan Area** | Terbatas (ruangan, rumah, gedung sekolah). | Global (seluruh dunia). |
-| **Kepemilikan & Pengelola** | Dimiliki dan dikelola sendiri (misalnya pihak sekolah atau pemilik rumah). | Tidak dimiliki satu pihak; dikelola bersama oleh berbagai organisasi dan penyedia layanan dunia. |
-| **Kecepatan Transfer Data** | Sangat tinggi dan stabil karena jaraknya dekat. | Bergantung pada paket layanan, kualitas sinyal, dan kepadatan trafik. |
-| **Biaya Operasional** | Cukup biaya pembelian perangkat (kabel, *switch*, *router*), tidak ada iuran kuota bulanan untuk transfer lokal. | Memerlukan biaya langganan (paket data seluler atau Wi-Fi bulanan ke ISP). |
-| **Contoh Penggunaan** | Berbagi file di lab komputer, mencetak dokumen ke *printer* jaringan, ujian berbasis *server* lokal sekolah. | Mencari informasi di Google, mengirim email, rapat daring, mengakses media sosial. |
+| **Jangkauan** | Terbatas (ruangan, rumah, gedung sekolah). | Global (menghubungkan seluruh dunia). |
+| **Pengelola** | Dikelola secara mandiri (pihak sekolah atau pemilik rumah). | Tidak dimiliki satu pihak; dikelola bersama oleh berbagai penyedia layanan dunia. |
+| **Kecepatan & Stabilitas** | Sangat cepat dan stabil karena jarak perangkat berdekatan. | Dipengaruhi paket langganan, jarak ke pemancar, dan kepadatan trafik. |
+| **Biaya Akses** | Tanpa biaya kuota bulanan untuk pertukaran data internal. | Memerlukan langganan paket data seluler atau Wi-Fi ke ISP. |
+| **Contoh Nyata** | Ujian berbasis *server* lokal lab sekolah, berbagi *printer* kantor. | Membuka YouTube, mencari materi di Google, mengirim email, rapat daring. |
 
 ---
 
-## 3. Bagaimana Internet Sampai ke Tangan Kita?
+## 3. Infrastruktur Fisik Internet: Dari Server ke Layar Kita
 
-Banyak orang mengira internet "melayang di awan" karena ada istilah *cloud*. Faktanya, hampir seluruh lalu lintas internet dunia mengalir lewat infrastruktur fisik yang nyata—termasuk kabel serat optik yang dibentangkan di dasar laut!
+> ❌ **Miskonsepsi yang Sering Terjadi:** Banyak orang mengira internet dipancarkan dari satelit luar angkasa.  
+> ✅ **Faktanya:** Lebih dari **95% lalu lintas internet dunia** mengalir lewat **kabel serat optik (*fiber optic*) di darat dan dasar laut** karena jauh lebih cepat, stabil, dan murah dibanding satelit.
 
-Berikut perjalanan data dari tempat penyimpanan hingga tampil di layar HP atau laptopmu:
+### Alur Perjalanan Data Internet
 
 ```mermaid
 flowchart LR
-    A[Server Data] --> B[Kabel Fiber Optik]
-    B --> C[ISP / Penyedia Layanan]
-    C --> D[Menara BTS / Router Wi-Fi]
-    D --> E[Perangkat Pengguna]
+    A[1. Pusat Data / Server] --> B[2. Kabel Serat Optik Bawah Laut]
+    B --> C[3. ISP / Penyedia Layanan]
+    C --> D[4. Menara BTS atau Router Wi-Fi]
+    D --> E[5. Perangkat Pengguna]
 ```
 
-Penjelasan setiap komponennya:
+Mari pahami peran setiap stasiun dalam perjalanan data tersebut:
 
-* **Server Data:** Komputer berkemampuan sangat tinggi yang menyala 24 jam penuh untuk menyimpan halaman web, gambar, video, dan aplikasi.
-* **Kabel Fiber Optik:** Kabel berbahan serat kaca halus yang mengirimkan data dalam bentuk **pulsa cahaya** dengan kecepatan sangat tinggi melintasi daratan dan dasar laut.
-* **ISP (*Internet Service Provider*):** Perusahaan penyedia layanan internet yang menjadi "gerbang" bagi masyarakat untuk masuk ke jaringan internet global (contoh di Indonesia: Telkomsel/IndiHome, Indosat, XL, Biznet, dan lainnya).
-* **Menara BTS (*Base Transceiver Station*) / Router Wi-Fi:** Perangkat pemancar terakhir yang mengubah sinyal dari ISP menjadi gelombang radio agar bisa ditangkap tanpa kabel oleh HP (melalui sinyal seluler dari BTS) atau laptop/HP (melalui sinyal Wi-Fi dari *router*).
-* **Perangkat Pengguna (*Client*):** Ponsel, tablet, atau laptop yang kamu gunakan untuk meminta dan menampilkan informasi.
+1. **Pusat Data (*Data Center / Server*):** Gedung berisi ribuan komputer berperforma tinggi yang menyala 24 jam nonstop untuk menyimpan website, foto, dokumen, dan video (misalnya *server* YouTube atau Google di Singapura atau Amerika Serikat).
+2. **Kabel Serat Optik (*Fiber Optic*):** Kabel berbahan serat kaca sangat halus yang membawa data dalam bentuk **pulsa cahaya**. Kecepatannya mendekati kecepatan cahaya sehingga data dari benua lain bisa tiba dalam sepersekian detik.
+3. **ISP (*Internet Service Provider*):** Perusahaan penyedia jasa layanan internet di daerah kita (seperti Telkomsel, IndiHome, XL, Indosat, Biznet). ISP menjadi "gerbang resmi" yang menghubungkan jaringan lokal masyarakat ke jaringan global.
+4. **Pemancar Akhir (Menara BTS vs Router Wi-Fi):** Gerbang terakhir sebelum data masuk ke perangkat kita tanpa kabel.
+
+| Aspek Pembanding | Menara BTS (*Base Transceiver Station*) | Router Wi-Fi |
+| :--- | :--- | :--- |
+| **Jenis Koneksi** | Sinyal seluler / kuota data (3G, 4G, 5G). | Sinyal nirkabel lokal (Wi-Fi). |
+| **Jangkauan Sinyal** | Luas (beberapa ratus meter hingga beberapa kilometer di luar ruangan). | Terbatas (sekitar 10–30 meter di dalam rumah, kelas, atau gedung). |
+| **Mobilitas Pengguna** | Bisa dipakai sambil berpindah tempat (di perjalanan/kendaraan). | Hanya aktif selama pengguna berada di sekitar area *router*. |
+| **Sumber Sambungan** | Dikelola langsung oleh operator seluler. | Terhubung lewat kabel *fiber optic* ISP ke rumah/sekolah. |
+
+5. **Perangkat Pengguna (*Client*):** HP, tablet, atau laptop yang memiliki antena penerima sinyal untuk meminta dan menampilkan data kepada kita.
+
+### Analisis Gangguan Jalur Fisik
+Karena seluruh rantai di atas saling bergantung, kerusakan di satu titik berdampak berbeda:
+* **Router Wi-Fi sekolah mati listrik:** Hanya warga sekolah yang kehilangan akses Wi-Fi; pengguna kuota seluler di dekat sekolah tetap bisa mengakses internet.
+* **Menara BTS mengalami gangguan:** Pengguna operator seluler tersebut di sekitar area BTS kehilangan sinyal, tetapi pengguna Wi-Fi kabel tetap lancar.
+* **Kabel serat optik bawah laut putus (misalnya tersangkut jangkar kapal):** Akses ke *server* luar negeri di wilayah yang terdampak melambat drastis atau terputus (*down*) hingga ISP mengalihkan jalur (*rerouting*) atau memperbaiki kabelnya.
 
 ---
 
-## 4. Evolusi Sinyal Seluler (1G hingga 5G) dan IoT
+## 4. Evolusi Jaringan Seluler: Dari 1G hingga 5G
 
-Cara perangkat seluler terhubung ke jaringan terus berkembang pesat dari generasi ke generasi. Huruf **"G"** pada 4G atau 5G adalah singkatan dari ***Generation*** (generasi teknologi jaringan nirkabel).
+Huruf **"G"** pada jaringan seluler berarti ***Generation*** (generasi teknologi komunikasi nirkabel). Setiap generasi menghadirkan lompatan besar dalam kecepatan dan jenis data yang bisa dikirimkan:
 
-| Generasi | Kemampuan Utama | Gambaran di Kehidupan Nyata |
-| :--- | :--- | :--- |
-| **1G** | Hanya panggilan suara (sinyal analog). | Telepon genggam berukuran besar dengan antena panjang; belum bisa berkirim SMS. |
-| **2G** | Suara digital + pesan teks (**SMS** dan **MMS**). | Mulai muncul ponsel layar kecil yang bisa berkirim pesan singkat dan internet sangat lambat (GPRS/EDGE). |
-| **3G** | Akses internet *mobile* yang layak untuk membuka web dan *video call* awal. | Era awal *smartphone* dan media sosial di ponsel. |
-| **4G (LTE)** | Internet berkecepatan tinggi dan stabil. | Lancar menonton video HD, kelas daring (*video conference*), dan bermain gim daring. |
-| **5G** | Kecepatan sangat tinggi dengan jeda (*latency*) nyaris nol, mampu menampung jutaan perangkat sekaligus. | Mendukung teknologi modern seperti kendaraan otonom, operasi medis jarak jauh, dan kota pintar (*smart city*). |
-
-### Mengenal *Internet of Things* (IoT)
-Saat ini, internet tidak hanya menghubungkan komputer dan ponsel, tetapi juga **benda-benda di sekitar kita**. Konsep inilah yang disebut **IoT (*Internet of Things*)**—yaitu benda fisik yang dilengkapi sensor dan koneksi internet sehingga bisa mengirim data atau dikendalikan dari jarak jauh.
-
-**Contoh IoT di sekitar kita:**
-* **Jam tangan pintar (*smartwatch*):** Memantau detak jantung dan jumlah langkah lalu mengirim laporannya ke HP.
-* **Lampu & AC pintar (*smart home*):** Dapat dinyalakan atau dimatikan lewat aplikasi ponsel meski pemilik rumah sedang di luar kota.
-* **CCTV daring:** Memantau kondisi rumah atau sekolah secara langsung dari jarak jauh.
-* **Sensor pertanian pintar:** Mengukur kelembapan tanah secara otomatis dan menyalakan penyiraman tanaman bila tanah mulai kering.
+| Generasi | Sifat Sinyal | Kemampuan Utama | Contoh Penggunaan di Masa Itu |
+| :--- | :--- | :--- | :--- |
+| **1G** | Analog | Hanya panggilan suara. | Ponsel berukuran besar; suara sering berisik, belum bisa SMS. |
+| **2G** | Digital | Suara jernih + **SMS & MMS** + data sangat lambat. | Berkirim pesan teks singkat; internet baru sebatas teks ringan. |
+| **3G** | Digital (Pita Lebar) | Akses internet *mobile* memadai. | Membuka halaman web di HP, email, dan panggilan video awal. |
+| **4G (LTE)** | Digital Kecepatan Tinggi | Transfer data cepat dan stabil. | *Streaming* video HD, kelas daring (*Zoom/Meet*), media sosial, gim daring. |
+| **5G** | Ultra Cepat & Latensi Sangat Rendah | Kecepatan sangat tinggi, jeda hampir nol, mampu menampung jutaan perangkat serentak. | Kendaraan otonom, telemedis (operasi jarak jauh), *smart city*, dan **IoT skala besar**. |
 
 ---
 
-## 5. *Web Browser* vs *Search Engine* (Jangan Tertukar!)
+## 5. Pengalamatan di Internet: IP Address, DNS, dan URL
 
-Dua istilah ini paling sering tertukar dalam percakapan sehari-hari. Padahal fungsinya sangat berbeda:
+Bayangkan kamu mengirim paket kepada sahabatmu di luar kota. Paket tidak akan sampai tanpa **alamat rumah yang unik**. Di internet, mekanismenya persis sama:
 
-| Aspek | *Web Browser* (Peramban Web) | *Search Engine* (Mesin Pencari) |
-| :--- | :--- | :--- |
-| **Pengertian** | **Aplikasi** yang terpasang di HP/komputer untuk membuka dan menampilkan halaman website. | **Website khusus** yang bertugas membantu kita mencari informasi di internet berdasarkan kata kunci. |
-| **Analogi** | **Mobil / Kendaraan** yang mengantarmu berkeliling kota. | **Peta / Petugas Informasi** yang memberitahu alamat mana yang harus kamu tuju. |
-| **Contoh** | Google Chrome, Mozilla Firefox, Microsoft Edge, Safari, Opera. | Google Search (`google.com`), Bing (`bing.com`), DuckDuckGo (`duckduckgo.com`), Yahoo Search. |
+### A. IP Address (*Internet Protocol Address*)
+Setiap perangkat dan *server* yang terhubung ke internet memiliki "nomor rumah" unik berupa deretan angka yang disebut **IP Address**, contohnya: `142.250.193.206`. Nomor inilah yang dibaca komputer dan *router* agar data yang kamu minta tidak nyasar ke HP orang lain.
 
-> 💡 **Ingat:** Kamu membutuhkan **Web Browser** terlebih dahulu untuk bisa membuka **Search Engine**.
+### B. DNS (*Domain Name System*) — "Buku Kontak Internet"
+Manusia sulit menghafal puluhan deretan angka IP Address setiap hari. Karena itu, dibuatlah sistem **DNS** yang bekerja persis seperti **Buku Kontak di HP-mu**: kamu cukup mengetik nama *"Ummi"* di kontak, lalu HP otomatis memanggil nomor teleponnya.
 
-### Mengenal Bagian Alamat Website (URL)
-Saat membuka halaman di *browser*, kamu akan melihat alamat di bilah atas yang disebut **URL (*Uniform Resource Locator*)**. Contoh:
+Begini cara DNS bekerja di balik layar saat kamu mengetik `kemdikbud.go.id`:
+
+```mermaid
+flowchart LR
+    A[Kamu mengetik<br/>kemdikbud.go.id] --> B[Browser bertanya<br/>ke Server DNS]
+    B --> C[DNS mencocokkan nama<br/>menjadi angka IP Address]
+    C --> D[Browser terhubung ke<br/>Server tujuan & halaman tampil]
+```
+
+### C. Membaca Struktur Alamat Web (URL) dan Keamanan HTTPS
+Alamat lengkap sebuah halaman web disebut **URL (*Uniform Resource Locator*)**. Contoh:
 
 ```text
-[https://www.kemdikbud.go.id/berita](https://www.kemdikbud.go.id/berita)
+[https://www.kemdikbud.go.id/berita/pendidikan](https://www.kemdikbud.go.id/berita/pendidikan)
 ```
 
-* **`https://`** → Protokol keamanan pengiriman data. Huruf **`s`** (*secure*) menandakan koneksi terenkripsi dan lebih aman dibanding `http://`.
-* **`kemdikbud.go.id`** → Nama **domain** (alamat unik website).
-* **Akhiran Domain (*Extension*)** memberi petunjuk jenis pemilik situs:
-  * `.sch.id` → Sekolah di Indonesia
-  * `.ac.id` / `.edu` → Perguruan tinggi / pendidikan
-  * `.go.id` / `.gov` → Lembaga pemerintahan resmi
+* **`https://`** → Protokol pengiriman data yang aman. Huruf **`s`** (*secure*)—biasanya ditandai ikon **gembok** di *browser*—menandakan data yang kamu kirim (seperti kata sandi) dienkripsi agar tidak mudah disadap, berbeda dengan `http://` biasa.
+* **`kemdikbud.go.id`** → **Nama Domain**. Akhiran domain (*Top-Level Domain*) menunjukkan identitas pemilik situs:
+  * `.go.id` → Lembaga resmi pemerintah Indonesia (misal: `solokkota.go.id`, `bps.go.id`)
+  * `.sch.id` → Sekolah resmi di Indonesia
+  * `.ac.id` / `.edu` → Perguruan tinggi / lembaga akademik
   * `.org` → Organisasi nirlaba
   * `.com` / `.co.id` → Situs umum atau perusahaan komersial
 
 ---
 
-## 6. Teknik Menggunakan Mesin Pencari Secara Efektif
+## 6. *Web Browser* vs *Search Engine*
 
-Mengetik kalimat panjang seperti *"tolong carikan pengertian jaringan komputer kelas 7 lengkap"* sering kali memunculkan jutaan hasil yang kurang relevan. Agar pencarianmu tepat sasaran, cepat, dan akurat, terapkan **5 teknik pencarian cerdas** berikut:
+Dua istilah ini paling sering tertukar dalam percakapan sehari-hari. Kuncinya: **satu berupa aplikasi di perangkatmu, satu lagi berupa situs web di internet**.
 
-### 1. Gunakan Kata Kunci Inti (Bukan Kalimat Panjang)
-Buang kata sambung atau kata tanya yang tidak perlu.
-* ❌ Kurang efektif: `apa saja contoh perangkat jaringan komputer untuk anak smp`
-* ✅ Lebih efektif: `contoh perangkat jaringan komputer`
-
-### 2. Tanda Kutip Ganda (`"..."`) untuk Pencarian Frasa Persis
-Gunakan tanda kutip jika kamu ingin mencari susunan kata yang **sama persis** tanpa terpisah-pisah.
-* Contoh: `"sejarah kota solok"` → Mesin pencari hanya menampilkan halaman yang memuat frasa *sejarah kota solok* secara utuh.
-
-### 3. Tanda Minus (`-`) untuk Mengecualikan Kata
-Gunakan tanda minus (tanpa spasi sebelum kata) untuk membuang hasil yang tidak diinginkan.
-* Contoh: `jaguar -mobil` → Menampilkan informasi tentang hewan jaguar tanpa memunculkan iklan atau berita mobil merek Jaguar.
-
-### 4. Operator `site:` untuk Mencari di Situs Tertentu Saja
-Sangat berguna saat mengerjakan tugas sekolah agar sumbernya langsung berasal dari lembaga resmi atau situs pendidikan.
-* Contoh: `literasi digital site:kemdikbud.go.id` → Hanya mencari materi literasi digital yang diterbitkan di situs resmi Kemdikbud.
-
-### 5. Operator `filetype:` untuk Mencari Format File Tertentu
-Gunakan bila kamu membutuhkan bahan bacaan dalam bentuk dokumen PDF atau presentasi PPT.
-* Contoh: `modul jaringan komputer filetype:pdf` → Hanya menampilkan dokumen berformat PDF yang bisa langsung dibaca atau diunduh.
+| Pembeda | *Web Browser* (Peramban Web) | *Search Engine* (Mesin Pencari) |
+| :--- | :--- | :--- |
+| **Wujud** | **Perangkat lunak aplikasi** yang diinstal di HP/laptop. | **Situs web khusus** yang diakses melalui internet. |
+| **Fungsi Utama** | Membuka, membaca, dan menampilkan halaman web. | Mencarikan daftar halaman web yang sesuai dengan kata kunci pengguna. |
+| **Analogi** | **Mobil / Kendaraan** untuk menjelajahi jalanan internet. | **Pustakawan / Pemandu** yang menunjukkan rak buku tempat informasi berada. |
+| **Hubungan Kerja** | Kamu **harus membuka *Web Browser* dulu**... | ...baru bisa membuka dan menggunakan ***Search Engine***. |
+| **Contoh** | Google Chrome, Mozilla Firefox, Microsoft Edge, Safari, Opera. | Google Search (`google.com`), Bing (`bing.com`), DuckDuckGo (`duckduckgo.com`), Yahoo. |
 
 ---
 
-## 7. Cek Pemahaman & Latihan Mandiri
+## 7. *Internet of Things* (IoT): Ketika Benda Ikut "Cerdas"
 
-Kerjakan soal-soal berikut terlebih dahulu sebelum membuka kunci pembahasannya!
+***Internet of Things* (IoT)** adalah konsep di mana benda-benda fisik sehari-hari (selain komputer dan HP) ditanami sensor, perangkat lunak, dan koneksi internet sehingga mampu mengumpulkan data, saling berkomunikasi, dan dikendalikan dari jarak jauh.
 
-### Latihan 1: Studi Kasus Infrastruktur
-Di laboratorium komputer sekolah, seluruh 20 komputer siswa dapat saling mengirim file ke komputer guru dan mencetak ke satu *printer* yang sama, meskipun kabel internet dari ISP sedang putus.  
-**Pertanyaan:** Jenis jaringan apa yang sedang berjalan di laboratorium tersebut? Jelaskan alasannya!
+### 4 Komponen Utama Sistem IoT
 
-<details>
-<summary><strong>👉 Klik untuk melihat pembahasan Latihan 1</strong></summary>
-
-Jaringan yang berjalan adalah **LAN (*Local Area Network*)** atau jaringan lokal. Alasannya, seluruh perangkat berada di area terbatas (satu ruangan laboratorium) dan tetap bisa berkomunikasi serta berbagi *printer* secara internal tanpa memerlukan sambungan internet global dari ISP.
-
-</details>
-
-### Latihan 2: Praktik Kata Kunci Cerdas
-Rina mendapat tugas mencari **modul berbentuk PDF** tentang **keamanan internet** yang berasal langsung dari **situs resmi pemerintahan Indonesia (`.go.id`)**.  
-**Pertanyaan:** Tuliskan satu baris kata kunci pencarian paling efektif yang sebaiknya diketik Rina di mesin pencari!
-
-<details>
-<summary><strong>👉 Klik untuk melihat pembahasan Latihan 2</strong></summary>
-
-Rina dapat mengetikkan kombinasi operator berikut:
-```text
-"keamanan internet" site:go.id filetype:pdf
+```mermaid
+flowchart LR
+    A[1. Sensor<br/>Mendeteksi kondisi fisik] --> B[2. Konektivitas<br/>Mengirim data via Wi-Fi/Seluler]
+    B --> C[3. Pemroses Data<br/>Menganalisis data di Server/Cloud]
+    C --> D[4. Aktuator & Antarmuka<br/>Menjalankan aksi & laporan ke HP]
 ```
-**Penjelasan:**
-* `"keamanan internet"` memastikan frasa tersebut muncul utuh.
-* `site:go.id` membatasi hasil hanya dari situs resmi pemerintah Indonesia.
-* `filetype:pdf` menyaring hasil agar hanya menampilkan dokumen PDF.
 
-</details>
+1. **Sensor:** "Indra" perangkat yang menangkap perubahan fisik di lingkungan (suhu, kelembapan tanah, gerakan, cahaya, atau detak jantung).
+2. **Konektivitas:** Jalur pengiriman data dari sensor ke internet (Wi-Fi, Bluetooth, atau jaringan seluler 4G/5G).
+3. **Pemroses Data:** Otak digital (di *cloud* atau *server*) yang mengolah data mentah—misalnya memutuskan: *"Kelembapan tanah di bawah 30%, tanaman perlu disiram!"*
+4. **Aktuator & Antarmuka Pengguna:** **Aktuator** adalah bagian yang melakukan tindakan nyata (menyalakan pompa air, menghidupkan alarm, mematikan lampu), sedangkan **Antarmuka Pengguna** adalah aplikasi di HP tempat pengguna melihat notifikasi atau memberi perintah manual.
 
-### Latihan 3: Benar atau Salah?
-Tentukan apakah pernyataan di bawah ini **Benar** atau **Salah**:
-1. Google Chrome dan Mozilla Firefox adalah contoh *Search Engine*.
-2. Kabel fiber optik mengirimkan data internet menggunakan pulsa cahaya.
-3. Jam tangan pintar yang mengirim data detak jantung ke aplikasi HP termasuk contoh *Internet of Things* (IoT).
+### Penerapan IoT di Berbagai Bidang
+
+| Bidang | Contoh Perangkat IoT | Manfaat Nyata |
+| :--- | :--- | :--- |
+| **Rumah Pintar (*Smart Home*)** | Lampu pintar, AC pintar, CCTV daring, kunci pintu pintar. | Menghemat listrik dan memantau keamanan rumah saat keluarga bepergian. |
+| **Kesehatan** | Jam tangan pintar (*smartwatch*), sensor kadar gula darah daring. | Memantau detak jantung, kualitas tidur, dan memberi peringatan dini bila kondisi tubuh tidak normal. |
+| **Pertanian (*Smart Farming*)** | Sensor kelembapan tanah & sistem penyiraman otomatis. | Membantu petani menghemat air dan menjaga kesuburan tanaman (seperti padi atau teh) secara tepat waktu. |
+| **Lingkungan** | Sensor kualitas udara, alat pendeteksi dini ketinggian air sungai. | Memberi peringatan dini polusi atau potensi banjir kepada warga sekitar. |
+
+### Risiko Privasi & Kebiasaan Aman Menggunakan IoT
+Karena perangkat IoT terus mengumpulkan data (termasuk rekaman kamera CCTV atau lokasi rumah), perangkat yang tidak aman bisa diretas pihak tidak bertanggung jawab. Terapkan **4 kebiasaan aman IoT**:
+* **Segera ganti kata sandi bawaan (*default password*)** saat pertama kali memasang perangkat (seperti CCTV atau *router* Wi-Fi).
+* **Rutin melakukan pembaruan (*update software*)** agar celah keamanan perangkat tertutup.
+* **Matikan fitur atau kamera yang tidak dipakai**, terutama di ruang pribadi keluarga.
+* **Gunakan perangkat dari merek resmi** yang memiliki jaminan keamanan data, bukan produk bajakan tanpa identitas jelas.
+
+---
+
+## 8. Strategi Pencarian Efektif & Sikap Kritis di Era AI
+
+### A. Menguasai Operator Pencarian (Google / Bing)
+Daripada mengetik kalimat tanya yang panjang dan menghasilkan jutaan laman tidak relevan, gunakan **kata kunci inti** yang dipadukan dengan **4 operator pencarian** berikut:
+
+| Operator | Cara Menulis | Fungsi | Contoh Penggunaan |
+| :--- | :--- | :--- | :--- |
+| **Tanda Kutip** (`"..."`) | Apit frasa di dalam tanda kutip | Mencari susunan kata yang **sama persis** urutannya. | `"Masjid Tuo Kayu Jao"` |
+| **Tanda Minus** (`-`) | Tanpa spasi di depan kata | **Mengecualikan** kata yang tidak diinginkan dari hasil. | `jaguar -mobil -iklan` |
+| **Operator `site:`** | `site:namadomain` | Membatasi pencarian **hanya di situs atau domain tertentu**. | `data penduduk solok site:bps.go.id` |
+| **Operator `filetype:`** | `filetype:ekstensi` | Mencari **jenis file tertentu** (PDF, PPT, DOCX). | `modul berpikir komputasional filetype:pdf` |
+
+> 💡 **Tips Kombinasi:** Kamu bisa menggabungkan beberapa operator sekaligus!  
+> Contoh: `"sejarah minangkabau" -wikipedia site:ac.id filetype:pdf`  
+> *(Artinya: cari dokumen PDF berisi frasa persis "sejarah minangkabau" dari situs kampus Indonesia, tanpa hasil Wikipedia).*
+
+### B. *Search Engine* Tradisional vs Mesin Pencari Berbasis AI Generatif
+Saat ini, selain mesin pencari tradisional, hadir pula **AI Generatif** (seperti Gemini dan ChatGPT) yang mampu merangkum informasi langsung menjadi jawaban terstruktur.
+
+* **Kelebihan AI Generatif:** Cepat membantu memahami konsep sulit, membuat analogi sederhana, dan merangkum topik panjang.
+* **Kelemahan AI Generatif (*Halusinasi AI*):** AI bekerja dengan memprediksi rangkaian kata; ia **bisa menghasilkan informasi yang terdengar sangat meyakinkan padahal keliru** (misalnya salah menyebut tahun sejarah, mengarang judul buku, atau keliru menghitung angka tertentu).
+
+#### Rumus Menyusun *Prompt* (Perintah AI) yang Baik
+Agar jawaban AI tepat guna untuk belajar, gunakan pola **4 unsur**:
+
+$$\text{Prompt Efektif} = \text{Peran} + \text{Tugas} + \text{Target/Tingkat} + \text{Format}$$
+
+* ❌ *Prompt lemah:* `"Jelaskan DNS"`
+* ✅ *Prompt efektif:* `"Bertindaklah sebagai guru Informatika SMP (Peran). Jelaskan cara kerja DNS (Tugas) dengan analogi sederhana untuk siswa kelas 7 (Target) dalam bentuk 3 poin singkat dan 1 contoh nyata (Format)."`
+
+#### Etika & Sikap Kritis Menggunakan AI
+Dalam Islam, ketelitian menerima ilmu adalah bagian dari amanah dan *tabayyun*. Terapkan **3 prinsip bijak AI**:
+1. **AI adalah asisten belajar, bukan pengganti otak kita:** Gunakan untuk berdiskusi dan memahami materi, bukan untuk menyalin mentah-mentah tugas (*copy-paste*) lalu mengakuinya sebagai karya sendiri.
+2. **Wajib verifikasi silang:** Setiap fakta penting (angka, sejarah, dalil, kesehatan) yang berasal dari AI harus dicek ulang ke **buku pelajaran, guru, atau situs resmi** (`.go.id`, `.ac.id`).
+3. **Jangan bagikan data pribadi:** Hindari mengetikkan alamat rumah, nomor telepon, atau data rahasia keluarga ke kolom obrolan AI.
+
+---
+
+## 9. Aktivitas Pembelajaran (Plugged & Unplugged)
+
+### Aktivitas 1: Detektif Jalur & Buku Telepon DNS (*Plugged*)
+1. Buka *Web Browser* di komputer lab/HP.
+2. Ketikkan alamat IP `142.250.193.206` di bilah URL lalu tekan **Enter** untuk membuktikan bahwa situs web pada dasarnya dipanggil menggunakan angka IP Address.
+3. Kunjungi `whoismyisp.org` dan catat nama **ISP** serta **IP Publik** yang sedang digunakan jaringan sekolah.
+4. Uji kombinasi operator pencarian: cari 1 dokumen PDF resmi tentang keamanan internet dari situs pemerintah menggunakan `site:go.id` dan `filetype:pdf`.
+
+### Aktivitas 2: Simulasi "Rantai Infrastruktur & Gangguan" (*Unplugged*)
+1. Bentuk kelompok berisi 5 peran: **Server**, **Kabel Fiber Optik**, **ISP**, **Menara BTS / Router Wi-Fi**, dan **Pengguna (Client)**.
+2. Simulasikan pengiriman "paket data" dari *Server* ke *Client*.
+3. Diskusikan dua skenario:
+   * *Skenario A:* Peran **Router Wi-Fi** keluar dari barisan → siapa saja yang terdampak?
+   * *Skenario B:* Peran **Kabel Fiber Optik** keluar dari barisan → apa dampaknya bagi seluruh pengguna?
+
+---
+
+## 10. Cek Pemahaman Bertingkat (Latihan Mandiri)
+
+Kerjakan di buku catatanmu terlebih dahulu, lalu buka bagian pembahasan untuk memeriksa jawabanmu.
+
+### Soal 1 (Pemahaman Konsep — LAN vs Internet)
+Di sebuah laboratorium komputer, seluruh 25 komputer siswa tetap bisa mengirim tugas ke komputer guru melalui folder bersama saat kabel internet sekolah sedang terputus. Jenis jaringan apa yang sedang bekerja di laboratorium tersebut, dan mengapa tetap bisa berjalan tanpa internet?
 
 <details>
-<summary><strong>👉 Klik untuk melihat pembahasan Latihan 3</strong></summary>
+<summary><strong>👉 Lihat Pembahasan Soal 1</strong></summary>
 
-1. **Salah.** Google Chrome dan Mozilla Firefox adalah ***Web Browser*** (peramban web), bukan *Search Engine*.
-2. **Benar.** Fiber optik memanfaatkan serat kaca dan pulsa cahaya sehingga pengiriman data sangat cepat.
-3. **Benar.** Perangkat fisik yang memiliki sensor dan terhubung ke internet untuk bertukar data merupakan penerapan IoT.
+Jaringan yang bekerja adalah **LAN (*Local Area Network*)** atau jaringan lokal. LAN tetap bisa berjalan tanpa internet karena seluruh komputer terhubung secara langsung di dalam satu area terbatas (gedung/ruangan yang sama) menggunakan kabel/switch lokal tanpa perlu keluar menuju ISP atau jaringan global.
+
+</details>
+
+### Soal 2 (Analisis Kasus — Infrastruktur & Pemancar Akhir)
+Saat listrik di rumah Aisyah padam, koneksi Wi-Fi di rumahnya langsung mati. Namun, saat ia beralih menggunakan kuota data seluler di HP-nya, ia masih bisa membuka materi buku digital Informatika. Jelaskan mengapa hal ini bisa terjadi berdasarkan perbedaan **Router Wi-Fi** dan **Menara BTS**!
+
+<details>
+<summary><strong>👉 Lihat Pembahasan Soal 2</strong></summary>
+
+**Router Wi-Fi** di rumah membutuhkan aliran listrik dari rumah tersebut dan jangkauannya terbatas di dalam rumah, sehingga langsung mati saat listrik rumah padam. Sementara itu, **Menara BTS** milik operator seluler memiliki jangkauan luas (hingga beberapa kilometer) dan umumnya dilengkapi baterai cadangan/genset tersendiri, sehingga sinyal seluler HP tetap aktif.
+
+</details>
+
+### Soal 3 (Penerapan — Komponen IoT)
+Sebuah kebun teh di Alahan Panjang memasang alat penyiram pintar: jika tanah terlalu kering, sensor mengirim data lewat jaringan seluler ke *server*, lalu *server* memerintahkan keran air terbuka otomatis sekaligus mengirim laporan ke HP petani. Identifikasi keempat komponen IoT pada kasus tersebut!
+
+<details>
+<summary><strong>👉 Lihat Pembahasan Soal 3</strong></summary>
+
+1. **Sensor:** Sensor kelembapan tanah yang mendeteksi kondisi tanah kering.
+2. **Konektivitas:** Jaringan seluler yang mengirim data dari kebun ke *server*.
+3. **Pemroses Data:** *Server* yang menganalisis angka kelembapan dan mengambil keputusan untuk menyiram.
+4. **Aktuator & Antarmuka Pengguna:** Keran air otomatis (aktuator yang melakukan tindakan fisik) dan aplikasi laporan di HP petani (antarmuka pengguna).
+
+</details>
+
+### Soal 4 (HOTS — Strategi Pencarian & Sikap Kritis AI)
+1. Tuliskan satu baris kata kunci paling efisien untuk mencari **file PDF** mengenai **sejarah Masjid Tuo Kayu Jao** yang **hanya berasal dari situs kampus Indonesia** dan **tidak memunculkan Wikipedia**!
+2. Saat belajar, temanmu meminta AI menuliskan biodata seorang ilmuwan muslim lalu langsung menyalinnya ke tugas tanpa dibaca ulang. Mengapa kebiasaan ini berisiko, dan apa langkah perbaikan yang seharusnya dilakukan?
+
+<details>
+<summary><strong>👉 Lihat Pembahasan Soal 4</strong></summary>
+
+1. **Racikan Kata Kunci:**
+   ```text
+   "Masjid Tuo Kayu Jao" -wikipedia site:ac.id filetype:pdf
+   ```
+2. **Analisis Etika AI:** Kebiasaan menyalin mentah berisiko karena AI dapat mengalami **halusinasi** (menghasilkan fakta, tanggal, atau sumber yang keliru meski bahasanya terlihat meyakinkan), serta melanggar kejujuran belajar. Langkah yang benar adalah **membaca, memahami, mengecek ulang faktanya** ke buku pelajaran atau situs resmi, lalu **menulis ulang dengan bahasa sendiri**.
 
 </details>
 
 ---
 
-## 8. Glosarium Istilah Penting
+## 11. Glosarium Istilah Penting
 
-* **BTS (*Base Transceiver Station*):** Menara pemancar dan penerima sinyal seluler yang menghubungkan perangkat pengguna ke jaringan operator.
-* **Domain:** Nama alamat unik sebuah website yang mudah diingat manusia (contoh: `kemdikbud.go.id`).
-* **Fiber Optik:** Kabel berbahan serat kaca/plastik sangat halus yang menghantarkan data dalam bentuk cahaya.
-* **IoT (*Internet of Things*):** Konsep perangkat fisik sehari-hari yang dilengkapi sensor dan koneksi internet.
-* **ISP (*Internet Service Provider*):** Perusahaan penyedia jasa layanan sambungan internet.
-* **LAN (*Local Area Network*):** Jaringan komputer yang mencakup area terbatas seperti satu ruangan atau gedung.
-* **Search Engine:** Layanan situs web untuk menemukan informasi di internet menggunakan kata kunci.
-* **Web Browser:** Perangkat lunak aplikasi untuk membuka dan menampilkan halaman web.
+* **Aktuator:** Komponen pada sistem IoT yang menjalankan tindakan fisik berdasarkan perintah pemroses data (contoh: motor penggerak, sakelar lampu otomatis, katup air).
+* **BTS (*Base Transceiver Station*):** Menara pemancar dan penerima sinyal seluler milik operator telekomunikasi.
+* **DNS (*Domain Name System*):** Sistem yang menerjemahkan nama domain situs web (seperti `google.com`) menjadi alamat angka IP Address.
+* **Fiber Optik:** Kabel serat kaca halus penghantar data internet dalam bentuk pulsa cahaya berkecepatan tinggi.
+* **Halusinasi AI:** Kondisi ketika AI generatif memberikan jawaban yang salah atau mengarang informasi namun disampaikan dengan gaya bahasa yang meyakinkan.
+* **HTTPS (*Hypertext Transfer Protocol Secure*):** Protokol pengiriman data web yang terenkripsi sehingga lebih aman dari penyadapan.
+* **IoT (*Internet of Things*):** Benda fisik sehari-hari yang dibekali sensor dan sambungan internet agar dapat bertukar data atau dikendalikan jarak jauh.
+* **IP Address:** Deretan angka unik yang berfungsi sebagai identitas alamat setiap perangkat/server di jaringan internet.
+* **ISP (*Internet Service Provider*):** Perusahaan penyedia jasa layanan akses internet bagi masyarakat.
+* **LAN (*Local Area Network*):** Jaringan komputer lokal berjangkauan sempit seperti ruangan lab, rumah, atau gedung sekolah.
+* **Prompt:** Kalimat instruksi terstruktur yang diberikan pengguna kepada AI generatif.
+* **Search Engine:** Situs web khusus untuk mencari informasi di internet menggunakan kata kunci.
+* **Web Browser:** Aplikasi pada perangkat pengguna untuk membuka dan menampilkan halaman web.
 
 ---
 
-## 9. Rangkuman
+## 12. Rangkuman Bab
 
-* **Jaringan Lokal (LAN)** menghubungkan perangkat di area sempit secara mandiri, sedangkan **Internet** adalah jaringan global yang menyatukan jutaan jaringan di seluruh dunia.
-* Data internet mengalir melalui infrastruktur nyata: **Server → Kabel Fiber Optik → ISP → Menara BTS / Router Wi-Fi → Perangkat Pengguna**.
-* Teknologi jaringan seluler berkembang dari **1G** (hanya suara) hingga **5G** (kecepatan sangat tinggi yang mendukung **IoT**).
-* ***Web Browser*** adalah aplikasi pembuka web (Chrome, Firefox, Edge), sedangkan ***Search Engine*** adalah situs pencari informasi (Google, Bing, DuckDuckGo).
-* Pencarian informasi akan jauh lebih cepat dan akurat jika menggunakan kata kunci inti serta operator pencarian seperti **`"..."`**, **`-`**, **`site:`**, dan **`filetype:`**.
+* **LAN** menghubungkan perangkat di area sempit secara mandiri, sedangkan **Internet** adalah jaringan global berbasis infrastruktur fisik nyata (**Server → Kabel Fiber Optik → ISP → BTS/Router Wi-Fi → Perangkat Pengguna**).
+* Teknologi seluler berkembang dari **1G** (suara analog) hingga **5G** (ultra cepat dan mendukung **IoT**).
+* Komputer mengenali alamat melalui **IP Address**, sementara manusia dimudahkan oleh **DNS** yang menerjemahkan nama situs menjadi angka IP.
+* ***Web Browser*** adalah aplikasi pembuka situs (Chrome, Firefox, Edge), sedangkan ***Search Engine*** adalah situs pencarinya (Google, Bing, DuckDuckGo).
+* Sistem **IoT** tersusun dari **Sensor, Konektivitas, Pemroses Data, dan Aktuator/Antarmuka**, serta wajib dijaga keamanannya dengan mengganti kata sandi bawaan dan rutin memperbarui sistem.
+* Pencarian efektif memadukan kata kunci inti dengan operator (`"..."`, `-`, `site:`, `filetype:`), dan penggunaan **AI Generatif** harus selalu disertai *prompt* yang jelas serta verifikasi ulang ke sumber resmi.
