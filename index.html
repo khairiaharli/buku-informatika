@@ -12,38 +12,221 @@
 
   <style>
     :root {
-      --theme-color: #0f766e;
+      --theme-color: #105666;       /* Midnight green */
+      --bg-beige: #F7F4D5;          /* Beige utama */
+      --bg-beige-soft: #EFEBC4;     /* Beige sedikit lebih gelap untuk sidebar & kartu */
+      --dark-green: #0A3323;        /* Dark green untuk teks & judul */
+      --moss-green: #839958;        /* Moss green untuk aksen kotak & garis */
+      --rosy-brown: #D3968C;        /* Rosy brown untuk sorotan hangat */
+      --midnight-green: #105666;    /* Midnight green untuk tautan & header */
     }
 
+    /* Latar belakang keseluruhan halaman */
+    body,
+    .content,
+    .sidebar-toggle {
+      background-color: var(--bg-beige) !important;
+      color: var(--dark-green);
+    }
+
+    /* Area Daftar Isi (Sidebar) */
+    .sidebar {
+      background-color: var(--bg-beige-soft) !important;
+      border-right: 1px solid var(--rosy-brown);
+      color: var(--dark-green);
+    }
+
+    .sidebar .app-name-link {
+      color: var(--dark-green) !important;
+      font-weight: 700;
+    }
+
+    .sidebar ul li a {
+      color: var(--dark-green);
+      font-size: 14.5px;
+    }
+
+    .sidebar ul li a:hover {
+      color: var(--midnight-green);
+    }
+
+    .sidebar ul li.active > a {
+      color: var(--midnight-green) !important;
+      font-weight: 700;
+      border-right: 3px solid var(--rosy-brown);
+      background-color: rgba(211, 150, 140, 0.16);
+    }
+
+    .sidebar-toggle span {
+      background-color: var(--dark-green) !important;
+    }
+
+    /* Kolom Pencarian */
+    .search {
+      border-bottom: 1px solid rgba(131, 153, 88, 0.45) !important;
+    }
+
+    .search input {
+      background-color: var(--bg-beige) !important;
+      border: 1px solid var(--moss-green) !important;
+      border-radius: 6px;
+      color: var(--dark-green) !important;
+    }
+
+    .search input::placeholder {
+      color: rgba(10, 51, 35, 0.55);
+    }
+
+    /* Kenyamanan membaca di area konten utama */
     .markdown-section {
       max-width: 820px;
       font-size: 16px;
       line-height: 1.75;
+      color: var(--dark-green);
     }
 
+    .markdown-section h1 {
+      color: var(--dark-green);
+      border-bottom: 2px solid var(--moss-green);
+      padding-bottom: 8px;
+    }
+
+    .markdown-section h2 {
+      color: var(--midnight-green);
+      border-bottom: 1px solid rgba(131, 153, 88, 0.45);
+      padding-bottom: 6px;
+    }
+
+    .markdown-section h3,
+    .markdown-section h4 {
+      color: var(--dark-green);
+    }
+
+    .markdown-section strong {
+      color: var(--dark-green);
+    }
+
+    .markdown-section a {
+      color: var(--midnight-green);
+      font-weight: 600;
+    }
+
+    .markdown-section hr {
+      border: none;
+      border-top: 1px solid var(--rosy-brown);
+      margin: 28px 0;
+    }
+
+    /* Kotak Kutipan / Info Penting (Blockquote) */
+    .markdown-section blockquote {
+      border-left: 4px solid var(--moss-green);
+      background-color: rgba(131, 153, 88, 0.15);
+      color: var(--dark-green);
+      padding: 12px 16px;
+      border-radius: 0 8px 8px 0;
+    }
+
+    /* Tabel Materi & Perbandingan */
+    .markdown-section table {
+      display: table;
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .markdown-section table th {
+      background-color: var(--midnight-green);
+      color: var(--bg-beige);
+      border: 1px solid var(--midnight-green);
+      font-weight: 600;
+    }
+
+    .markdown-section table td {
+      border: 1px solid rgba(10, 51, 35, 0.22);
+      color: var(--dark-green);
+    }
+
+    .markdown-section table tr {
+      background-color: var(--bg-beige) !important;
+    }
+
+    .markdown-section table tr:nth-child(2n) {
+      background-color: rgba(131, 153, 88, 0.12) !important;
+    }
+
+    /* Blok Kode & Pseudocode */
+    .markdown-section code {
+      background-color: rgba(211, 150, 140, 0.28);
+      color: var(--dark-green);
+      border-radius: 4px;
+      padding: 2px 6px;
+    }
+
+    .markdown-section pre {
+      background-color: var(--bg-beige-soft) !important;
+      border-left: 4px solid var(--midnight-green);
+      border-radius: 6px;
+    }
+
+    .markdown-section pre > code {
+      background-color: transparent !important;
+      color: var(--dark-green) !important;
+    }
+
+    /* Kotak Pembahasan Buka-Tutup (<details>) */
+    .markdown-section details {
+      background-color: rgba(211, 150, 140, 0.18);
+      border: 1px solid var(--rosy-brown);
+      border-radius: 8px;
+      padding: 10px 14px;
+      margin: 14px 0;
+    }
+
+    .markdown-section details summary {
+      cursor: pointer;
+      color: var(--midnight-green);
+    }
+
+    /* Tombol Navigasi Bab (Prev / Next) */
+    .docsify-pagination-container {
+      border-top: 1px solid var(--rosy-brown) !important;
+    }
+
+    .pagination-item-label,
+    .pagination-item-title {
+      color: var(--midnight-green) !important;
+    }
+
+    /* Watermark Permanen di Pojok Kanan Bawah */
     .global-watermark {
       position: fixed;
       bottom: 12px;
       right: 18px;
       font-size: 12px;
       font-weight: 600;
-      color: rgba(15, 118, 110, 0.42);
+      color: rgba(16, 86, 102, 0.55);
       pointer-events: none;
       user-select: none;
       z-index: 999;
       letter-spacing: 0.4px;
     }
 
+    /* Footer Otomatis di Bawah Setiap Halaman */
     .page-footer-watermark {
       margin-top: 48px;
       padding-top: 14px;
-      border-top: 1px solid #e5e7eb;
+      border-top: 1px solid var(--rosy-brown);
       text-align: center;
       font-size: 13px;
-      color: #6b7280;
+      color: var(--midnight-green);
+      font-weight: 500;
     }
 
+    /* Pengaturan Cetak PDF */
     @media print {
+      body, .content, .markdown-section {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+      }
       .sidebar, .sidebar-toggle, .pagination-item {
         display: none !important;
       }
