@@ -29,48 +29,74 @@
       color: var(--dark-green);
     }
 
-    /* Area Daftar Isi (Sidebar) */
+/* Area Daftar Isi (Sidebar) */
     .sidebar {
-      background-color: var(--bg-beige-soft) !important;
-      border-right: 1px solid var(--rosy-brown);
-      color: var(--dark-green);
+      background-color: var(--midnight-green) !important;
+      border-right: 3px solid var(--rosy-brown);
+      color: var(--bg-beige);
     }
 
     .sidebar .app-name-link {
-      color: var(--dark-green) !important;
+      color: var(--bg-beige) !important;
       font-weight: 700;
     }
 
+    .sidebar ul li strong {
+      color: var(--rosy-brown);
+    }
+
     .sidebar ul li a {
-      color: var(--dark-green);
+      color: rgba(247, 244, 213, 0.9);
       font-size: 14.5px;
     }
 
     .sidebar ul li a:hover {
-      color: var(--midnight-green);
+      color: var(--rosy-brown);
     }
 
     .sidebar ul li.active > a {
-      color: var(--midnight-green) !important;
+      color: var(--bg-beige) !important;
       font-weight: 700;
-      border-right: 3px solid var(--rosy-brown);
-      background-color: rgba(211, 150, 140, 0.16);
+      border-right: 4px solid var(--rosy-brown);
+      background-color: rgba(211, 150, 140, 0.25);
+    }
+
+    .sidebar-toggle {
+      background-color: var(--bg-beige-soft) !important;
+      border-radius: 0 8px 0 0;
     }
 
     .sidebar-toggle span {
       background-color: var(--dark-green) !important;
     }
 
+    /* Hasil Pencarian di Sidebar */
+    .matching-post {
+      border-bottom: 1px solid rgba(247, 244, 213, 0.2) !important;
+    }
+
+    .matching-post h2 {
+      color: var(--rosy-brown) !important;
+    }
+
+    .matching-post p {
+      color: var(--bg-beige) !important;
+    }
+
     /* Kolom Pencarian */
     .search {
-      border-bottom: 1px solid rgba(131, 153, 88, 0.45) !important;
+      border-bottom: 1px solid rgba(247, 244, 213, 0.25) !important;
     }
 
     .search input {
       background-color: var(--bg-beige) !important;
-      border: 1px solid var(--moss-green) !important;
+      border: 2px solid var(--moss-green) !important;
       border-radius: 6px;
       color: var(--dark-green) !important;
+    }
+
+    .search input::placeholder {
+      color: rgba(10, 51, 35, 0.55);
     }
 
     .search input::placeholder {
@@ -117,12 +143,12 @@
       margin: 28px 0;
     }
 
-    /* Kotak Kutipan / Info Penting (Blockquote) */
+/* Kotak Kutipan / Info Penting (Blockquote) */
     .markdown-section blockquote {
-      border-left: 4px solid var(--moss-green);
-      background-color: rgba(131, 153, 88, 0.15);
+      border-left: 5px solid var(--rosy-brown);
+      background-color: rgba(211, 150, 140, 0.26);
       color: var(--dark-green);
-      padding: 12px 16px;
+      padding: 14px 18px;
       border-radius: 0 8px 8px 0;
     }
 
