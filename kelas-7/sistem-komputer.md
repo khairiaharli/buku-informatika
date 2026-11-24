@@ -49,6 +49,7 @@ Jika salah satu komponen utamanya hilang atau rusak, sistem komputer tidak akan 
 ## 2. Tiga Serangkai Sistem Komputer
 
 ![Tiga Komponen Sistem Komputer source : indowebsite.co.id](assets/tiga_komponen.png)
+
 Agar komputer dapat menyala, menerima perintah, dan menghasilkan karya, diperlukan kesatuan **Tiga Serangkai** berikut:
 
 1. **Hardware (Perangkat Keras):**  
